@@ -1,9 +1,1 @@
-services:
-  - type: web
-    name: pcic-10-upload
-    env: node
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: NODE_VERSION
-        value: 18.17.0
+
