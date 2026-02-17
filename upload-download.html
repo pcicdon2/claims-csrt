@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCIC 10 - Upload & Download</title>
+    <link rel="stylesheet" href="upload-download.css">
+    <script src="local-app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>PCIC 10</h1>
+    </header>
+
+    <div class="content-wrapper">
+        <main>
+        <section class="card" id="upload">
+            <h2>UPLOAD</h2>
+            <div class="peo-select">
+                <label for="peoDropdown">Select PEO:</label>
+                <select id="peoDropdown">
+                    <option value="">-- Select PEO --</option>
+                    <option value="butuan">PEO BUTUAN</option>
+                    <option value="sanfrancisco">PEO SAN FRANCISCO</option>
+                    <option value="surigao">PEO SURIGAO</option>
+                    <option value="tandag">PEO TANDAG</option>
+                    <option value="valencia">PEO VALENCIA</option>
+                </select>
+            </div>
+            <div class="adjuster-select" id="adjusterSelect" style="display: none;">
+                <label for="adjusterDropdown">Select Adjuster:</label>
+                <select id="adjusterDropdown">
+                    <option value="">-- Select Adjuster --</option>
+                    <option value="Joey_Amacio">Joey Amacio</option>
+                    <option value="Leo_Daigdigan">Leo Daigdigan</option>
+                </select>
+            </div>
+            <div class="upload-area">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p>Drag and drop files here or click to browse</p>
+                <input type="file" id="fileInput" multiple accept="image/*">
+                <button onclick="document.getElementById('fileInput').click()">Choose Files</button>
+            </div>
+            <div id="selectedFiles" class="selected-files"></div>
+            <button id="saveButton" class="save-button" style="display: none;" onclick="saveSelectedFiles()">Save to Database</button>
+        </section>
+
+        <section class="card" id="download">
+            <h2>DOWNLOAD</h2>
+            <div class="download-list">
+                <div style="text-align: center; padding: 10px;">Loading...</div>
+            </div>
+        </section>
+        </main>
+    </div>
+</body>
+</html>

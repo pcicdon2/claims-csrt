@@ -1,0 +1,598 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #00a651;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.content-wrapper {
+    padding: 20px;
+}
+
+header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+}
+
+header h1 {
+    color: #2d3748;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    color: #667eea;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.peo-select {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.peo-select label {
+    display: block;
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.peo-select select {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    background: white;
+    color: #2d3748;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.peo-select select:hover {
+    border-color: #764ba2;
+}
+
+.peo-select select:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.adjuster-select {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.adjuster-select label {
+    display: block;
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.adjuster-select select {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    background: white;
+    color: #2d3748;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.adjuster-select select:hover {
+    border-color: #764ba2;
+}
+
+.adjuster-select select:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.upload-area {
+    border: 3px dashed #667eea;
+    border-radius: 10px;
+    padding: 50px 20px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.upload-area:hover {
+    background: #f7fafc;
+}
+
+.upload-area svg {
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.upload-area p {
+    color: #4a5568;
+    margin-bottom: 20px;
+}
+
+.upload-area input[type="file"] {
+    display: none;
+}
+
+.upload-area button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.upload-area button:hover {
+    opacity: 0.9;
+}
+
+.download-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.download-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.download-item:hover {
+    background: #edf2f7;
+}
+
+.download-item span {
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.download-item button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.download-item button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-content h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a5568;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #667eea;
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.file-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.file-info strong {
+    color: #2d3748;
+}
+
+.file-info small {
+    color: #718096;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.file-actions button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.file-actions button:hover {
+    opacity: 0.9;
+}
+
+.file-actions .delete-btn {
+    background: linear-gradient(135deg, #f56565 0%, #c53030 100%);
+}
+
+@media (max-width: 768px) {
+    .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .file-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+    
+    .file-actions button {
+        flex: 1;
+    }
+}
+
+
+/* Selected files preview */
+.selected-files {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+
+.selected-files h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.file-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid #667eea;
+}
+
+.file-preview-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.file-preview-info strong {
+    color: #2d3748;
+}
+
+.file-preview-info small {
+    color: #718096;
+}
+
+.save-button {
+    width: 100%;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.save-button:hover {
+    opacity: 0.9;
+}
+
+
+/* Image viewer modal */
+.image-modal {
+    z-index: 1001;
+}
+
+.image-modal-content {
+    max-width: 900px;
+    max-height: 90vh;
+}
+
+.image-info {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.image-info p {
+    margin: 5px 0;
+    color: #2d3748;
+}
+
+.image-container {
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.download-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Countdown notification */
+.countdown-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    min-width: 300px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.countdown-content {
+    text-align: center;
+}
+
+.countdown-content p {
+    margin: 0 0 15px 0;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.countdown-timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e53e3e;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.cancel-delete-btn {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-top: 10px;
+}
+
+.cancel-delete-btn:hover {
+    opacity: 0.9;
+}
+
+/* Notification messages */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 3000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-success {
+    background: #48bb78;
+}
+
+.notification-info {
+    background: #4299e1;
+}
+
+.notification-error {
+    background: #e53e3e;
+}
+
+
+/* Button group for print and download */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
+}
+
+.print-btn {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.print-btn:hover {
+    opacity: 0.9;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .printable-area, .printable-area * {
+        visibility: visible;
+    }
+    .printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
